@@ -10,9 +10,14 @@ from forms import CreatePostForm, RegisterForm, LoginForm, CommentForm
 from flask_gravatar import Gravatar
 from flask import abort
 from functools import wraps
+from environs import Env
+
+ #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
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = '8BYkEfBA6O6donzWlSihBXox7C0sKR6b'
+env = Env()
+env.read_env()
+app.config['SECRET_KEY'] = env("SECRET_KEY")
 ckeditor = CKEditor(app)
 Bootstrap(app)
 
